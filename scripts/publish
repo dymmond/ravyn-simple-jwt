@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-VERSION_FILE="lilya/__init__.py"
+VERSION_FILE="ravyn_simple_jwt/__init__.py"
 
 if [ ! -z "$GITHUB_ACTIONS" ]; then
   git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"

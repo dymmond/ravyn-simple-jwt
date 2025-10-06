@@ -63,6 +63,15 @@ Changelog = "https://ravyn-simple-jwt.dymmond.com/release-notes/"
 Funding = "https://github.com/sponsors/tarsil"
 Source = "https://github.com/dymmond/ravyn-simple-jwt"
 
+[tool.hatch.envs.default]
+dependencies = [
+    "mypy==1.16.1",
+    "ruff>=0.3.0,<5.0.0",
+    "pre-commit>=3.3.1,<4.0.0",
+    "devtools>=0.12.2",
+    "twine",
+]
+
 [project.optional-dependencies]
 test = [
     "autoflake>=2.0.2,<3.0.0",
@@ -75,7 +84,7 @@ test = [
     "pytest-asyncio>=0.20.0",
     "pytest-cov>=4.0.0,<5.0.0",
     "httpx",
-    "ruff>=0.0.256,<1.0.0",
+    "ruff>=0.3.0,<1.0.0",
 ]
 
 dev = [

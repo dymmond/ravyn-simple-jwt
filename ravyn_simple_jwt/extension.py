@@ -28,7 +28,7 @@ class SimpleJWTExtension(Extension):
 
 
     app = Ravyn(
-        pluggables={
+        extensions={
             "simple-jwt": Pluggable(SimpleJWTExtension, path="/auth"),
         },
     )
@@ -166,7 +166,7 @@ class SimpleJWTExtension(Extension):
 
 
         app = Ravyn(
-            pluggables={
+            extensions={
                 "simple-jwt": Pluggable(
                     SimpleJWTExtension,
                     path="/auth",

@@ -7,7 +7,7 @@ from ravyn_simple_jwt.extension import SimpleJWTExtension
 def test_can_assemble_pluggable():
     app = Ravyn(
         routes=[],
-        pluggables={"simple-jwt": Pluggable(SimpleJWTExtension, path="/auth")},
+        extensions={"simple-jwt": Pluggable(SimpleJWTExtension, path="/auth")},
         enable_openapi=True,
     )
     client = RavynTestClient(app)

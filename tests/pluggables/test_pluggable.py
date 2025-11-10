@@ -6,13 +6,16 @@ from ravyn_simple_jwt.extension import SimpleJWTExtension
 
 def test_can_assemble_pluggable():
     app = Ravyn(
-        routes=[], extensions={"simple-jwt": Pluggable(SimpleJWTExtension)}, enable_openapi=True
+        routes=[],
+        extensions={"simple-jwt": Pluggable(SimpleJWTExtension)},
+        enable_openapi=True,
     )
     client = RavynTestClient(app)
 
     response = client.get("/openapi.json")
 
     assert response.status_code == 200
+
     assert response.json() == {
         "openapi": "3.1.0",
         "info": {
@@ -194,6 +197,7 @@ def test_can_assemble_pluggable():
                     "type": "object",
                     "required": ["access_token"],
                     "title": "AccessToken",
+                    "description": 'The representation of an access token.\n\nWhen `model_dump()` is called, it will generate a python like\ndictionary.\n\n```python\n{"access_token": ...}\n```',
                 },
                 "HTTPValidationError": {
                     "properties": {
@@ -208,27 +212,34 @@ def test_can_assemble_pluggable():
                 },
                 "LoginEmailIn": {
                     "properties": {
-                        "email": {"type": "string", "format": "email", "title": "Email"},
+                        "email": {
+                            "type": "string",
+                            "format": "email",
+                            "title": "Email",
+                        },
                         "password": {"type": "string", "title": "Password"},
                     },
                     "type": "object",
                     "required": ["email", "password"],
                     "title": "LoginEmailIn",
+                    "description": 'The representation of a login payload used by the signin endpoint when using an\nemail backend for validation.\nWhen the endpoint is called via `POST` it should contain the following.\n\n\n```python\n{"email": ..., "password": ...}\n```',
                 },
                 "RefreshToken": {
                     "properties": {"refresh_token": {"type": "string", "title": "Refresh Token"}},
                     "type": "object",
                     "required": ["refresh_token"],
                     "title": "RefreshToken",
+                    "description": 'The representation of a refresh token.\n\nWhen `model_dump()` is called, it will generate a python like\ndictionary.\n\n```python\n{"refresh_token": ...}\n```',
                 },
                 "TokenAccess": {
                     "properties": {
-                        "access_token": {"type": "string", "title": "Access Token"},
                         "refresh_token": {"type": "string", "title": "Refresh Token"},
+                        "access_token": {"type": "string", "title": "Access Token"},
                     },
                     "type": "object",
-                    "required": ["access_token", "refresh_token"],
+                    "required": ["refresh_token", "access_token"],
                     "title": "TokenAccess",
+                    "description": 'The representation of token access used by the signin response.\n\nWhen `model_dump()` is called, it will generate a python like\ndictionary.\n\n```python\n{\n    "access_token": ...,\n    "refresh_token": ...,\n}\n```',
                 },
                 "ValidationError": {
                     "properties": {

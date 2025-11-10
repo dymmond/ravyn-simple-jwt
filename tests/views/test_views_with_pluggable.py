@@ -97,7 +97,7 @@ class ViewSettings(TestSettings):
 
 def create_app():
     app = Ravyn(
-        pluggables={
+        extensions={
             "simple-jwt": Pluggable(SimpleJWTExtension, path="/auth", settings_module=ViewSettings)
         }
     )

@@ -373,7 +373,7 @@ from ravyn_simple_jwt.extension import SimpleJWTExtension
 from ravyn import Ravyn, Pluggable
 
 app = Ravyn(
-    pluggables={
+    extensions={
         "simple-jwt": Pluggable(SimpleJWTExtension, path="/auth"),
     },
 )

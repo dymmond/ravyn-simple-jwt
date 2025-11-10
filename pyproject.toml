@@ -36,7 +36,7 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
     "Topic :: Internet :: WWW/HTTP",
 ]
-dependencies = ["ravyn[jwt,standard]>=0.3.1"]
+dependencies = ["ravyn[jwt,standard]>=0.3.2"]
 keywords = [
     "ravyn-simple-jwt",
     "jwt",
